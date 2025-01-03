@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Photo Album | AlbumPage</title>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" media="all" 
+href="css/AlbumPage.css" />
+
+</head>
+<body>
+	<header>
+		<div align="right">
+			<a href="Logout" class="button">Logout</a>
+		</div>
+		<div align="right">
+			<a th:text="HomePage" th:href="@{/GetHomePage}"></a>
+		</div>
+
+		<div align="center">
+			<h1 class="title">MY PHOTO ALBUM | ALBUM PAGE</h1>
+		</div>
+	</header>
+	
+	<div align="center">
+		<h2><span th:text="${album.title}"></span></h2>
+	</div>
+	<div align="center">
+		<table border=1 th:if="${not #lists.isEmpty(images)}">
+			<tbody>
+				<tr>
+					<td th:if="${hasPrevious}"><a
+						th:href="@{/GetAlbumPage(idAlbum=${album.id}, currentPage=${currentPage-1}, imageSelected =-1)}"><input
+							type="submit" value="<"></a></td>
+
+					<td th:each="i : ${images}">
+					Title:<a th:text="${i.title}" th:href="@{/GetAlbumPage(idAlbum=${album.id}, currentPage=${currentPage}, imageSelected = ${i.id})}"></a> 
+						<img th:src="@{${i.path}}" width="100" th:class="thumbnail"/>
+						
+					<td th:if="${hasNext}"><a
+						th:href="@{/GetAlbumPage(idAlbum=${album.id}, currentPage=${currentPage+1}, imageSelected =-1)}"><input
+							type="submit" value=">"></a></td>
+				</tr>
+			</tbody>
+		</table>
+		<div th:if="${#lists.isEmpty(images)}">No images.</div>
+	</div>
+	<br>
+	<br>
+	<div th:if="${imageSelected >= 0}" align="center">
+    	<h3>Image selected:</h3>
+		 Title:<span th:text="${images[imageSelected].title}"></span> <br>
+	     Date:<span	th:text="${images[imageSelected].date}"></span> <br> 
+	     Description:<span th:text="${images[imageSelected].descriptionText}"></span><br> 
+	     Creator:<span th:text="${images[imageSelected].creatorUsername}"></span><br> 
+	     Image:<br> <img th:src="@{${images[imageSelected].path}}" class="original" width = 400 />
+		<div th:if="${not #lists.isEmpty(comments)}" align = "center">
+		<br> Comments:
+		<br>
+		<div th:each="c : ${comments}">
+			User:<span th:text="${c.creatorUsername}"></span><br> 
+			Comment:<span th:text="${c.text}"></span>
+			<hr>
+		</div>
+	</div>
+	<div th:if="${#lists.isEmpty(comments)}" align = "center">No comments.</div>
+	<div align = "center">
+		<form action="AddComment" method="POST">
+			Add a comment: <br> 
+			Text: <input type="text" name="commentText" required><br>
+			<input type="hidden" name="imageId" th:value="${images[imageSelected].id}"> <br>
+			<input type="submit" value="Create">
+		</form>
+	</div>
+	</div>
+
+	<br>
+	<br>
+	<div align="center">
+		<form th:if="${album.creator} eq ${session.user.username}" action="AddImageToAlbum" method="POST">
+		<fieldset style="width:350px">
+			Add image to album: <br> 
+			Title:<input type="text" name="title" required><br>
+			Description:<input type="text" name="descriptionText" required><br>
+			Path:<input type="text" name="path" required><br> 
+			<input type="hidden" name="idAlbum" th:value="${album.id}"> <br>
+			<input type="hidden" name="creatorUsername" th:value="${session.user.username}"> <br>
+			<input type="submit" value="Create">
+			<p th:text=" ${session.errorMsgCreateImage}"></p>
+		</fieldset>
+		</form>
+	</div>
+	
+	
+
+</body>
+</html>

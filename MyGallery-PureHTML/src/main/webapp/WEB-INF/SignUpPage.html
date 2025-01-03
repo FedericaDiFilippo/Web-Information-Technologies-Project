@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Photo Album | SignUp </title>
+<link rel="stylesheet" type="text/css" media="all" href="css/SignUpPage.css" />
+</head>
+<body>
+	<header>		
+	<h1 align="center" class = "title">WELCOME TO MY PHOTO ALBUM</h1>
+		<p id="username"></p>
+	</header>
+	<div align="center">
+	
+		<form action="SignUp" method="POST">
+		<fieldset style="width: 350px">
+			Username:<input type="text" name="username" required><br> <br>
+			Email:<input type="email" name="email" required><br> <br>
+			Password:<input type="password"  name="password" required><br> <br>
+			Confirm Password:<input type="password" name="confirmPassword" required><br><br> 
+			<input type="submit" value="SignUp">
+			<p th:text=" ${errorMsgSignUp}"></p>
+			</fieldset>
+		</form>
+		or
+		<form action="GetLoginPage" method="POST">
+			<input type="submit" value="login"></form>
+	</div>
+</body>
+</html>

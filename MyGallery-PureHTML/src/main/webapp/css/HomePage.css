@@ -1,0 +1,21 @@
+body{
+  background-image: url('../forPages/background.jpg');
+   background-position: center center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+     cursor: pointer;
+}
+
+
+.albums{
+	padding: 1rem;
+	background-color:#b9b0b0;
+	border: 1px solid grey;
+}
+
+.container{
+	width: 50%;
+	padding: 0.5rem;
+	
+}

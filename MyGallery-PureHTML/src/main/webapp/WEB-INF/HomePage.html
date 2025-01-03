@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Photo Album | HomePage</title>
+<link rel="stylesheet" type="text/css" media="all"
+	href="css/HomePage.css" />
+</head>
+<body>
+	<header>
+		<div align="right">
+			<a href="Logout">Logout</a>
+		</div>
+		<div align="center">
+			<h1>MY PHOTO ALBUM</h1>
+			Welcome back <span th:text="${session.user.username}"></span>!
+		</div>
+	</header>
+	<div align="center">
+		<h2>Your albums</h2>
+		<div  th:if="${not #lists.isEmpty(allAlbumFromUser)}">
+			<div class="container" th:each="a : ${allAlbumFromUser}">
+				<div class="albums">
+					Title:<a th:text="${a.title}"
+						th:href="@{/GetAlbumPage(idAlbum = ${a.id}, currentPage = 1, imageSelected =-1)}"></a><br>
+					Date: <span
+						th:text="${a.creationDate}"></span><br>
+				</div>
+			</div>
+		</div>
+		<div th:if="${ #lists.isEmpty(allAlbumFromUser)}">No albums here</div>
+		<div>
+		<br>
+			<form action="CreateAlbum" method="POST">
+				<fieldset style="width: 350px">
+					Create a new album: <br> Title:<input type="text" name="title" required><br>
+					Date:<input type="date" name="creationDate" required><br> <input
+						type="submit" value="Create">	
+					<p th:text=" ${session.errorMsgCreateAlbum}"></p>		
+				</fieldset>
+			</form>
+			
+		</div>
+<br>
+	<hr>
+		<br>
+		<h2>Others' albums</h2>
+		<div  th:if="${not #lists.isEmpty(allOtherAlbum)}">
+			<div class="container" th:each="a : ${allOtherAlbum}">
+				<div class="albums">
+					Title:<a th:text="${a.title}"
+						th:href="@{/GetAlbumPage(idAlbum=${a.id}, currentPage=1,imageSelected =-1)}"></a><br>
+					Creator:<span th:text="${a.creator}"></span><br> Date: <span
+						th:text="${a.creationDate}"></span>
+				</div>
+			</div>
+		</div>
+		<div th:if="${ #lists.isEmpty(allOtherAlbum)}">No albums here</div>
+	</div>
+</body>
+</html>
