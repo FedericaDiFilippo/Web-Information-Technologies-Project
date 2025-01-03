@@ -1,0 +1,56 @@
+body{
+  background-image: url('../forPages/background.jpg');
+   background-position: center center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    scroll-behavior: smooth;
+    cursor: pointer;
+}
+
+
+#selectedImageContainer{
+    overflow:scroll;
+	position:fixed;
+	height: 90%;
+    top: 5%;
+    left: 30%;
+    border: 3px solid grey;
+     background-image: url('../forPages/background.jpg');
+     background-position: center center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+}
+
+#userAlbumsContainer{
+	width: 50%;
+	padding: 1rem;
+	margin-top:1rem;
+}
+
+#othersAlbumsContainer{
+	width: 50%;
+	padding: 1rem;
+	margin-top:1rem;
+	
+}
+
+.notdraggable{
+	padding: 1rem;
+	background-color:#b9b0b0;
+	border: 1px solid grey;
+}
+
+.draggable{
+	padding: 1rem;
+	background-color:#b9b0b0;
+	border: 1px solid grey;
+	cursor:move;
+}
+
+
+.dragging{
+	opacity: .5;
+}

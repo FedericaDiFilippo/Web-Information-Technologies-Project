@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Photo Album | HomePage</title>
+<script src="utils.js" charset="utf-8" defer></script>
+<script src="HomeManagement.js" charset="utf-8" defer></script>
+<link rel="stylesheet" type="text/css" media="all" href="css/Home.css" />
+</head>
+
+<body>
+	<header>
+		<div align="right">
+			<a href="Logout">Logout</a>
+		</div>
+		<div align="center">
+			<h1>MY PHOTO ALBUM</h1>
+			Welcome back <span id="id_username"></span>!
+		</div>
+		<div id="id_alert" class="alertmessage"></div>
+	</header>
+
+
+	<div align="center">
+		<h2>Your albums</h2>
+		<div id="userAlbumsAlert" class="alertmessage"></div>
+		<div id="userAlbumsContainer" >
+			<div class="container"  id="userAlbumsBody"></div>
+		</div>
+		<button id="saveButton">Save Order</button>
+		<br>
+	</div>
+	<hr>
+	<div align ="center">
+		<form id="createAlbumForm" action="#">
+			<fieldset style="width: 350px">
+				Create a new album:<br> 
+				Title:<input type="text" name="title" required><br> 
+				Date:<input type="date"	name="creationDate" required><br> 
+				<input type="submit" value="Create">
+				<div id="createAlbumAlert" class="alertmessage"></div>
+			</fieldset>
+		</form>
+		<br>
+		<hr>
+	</div>
+	<div align = "center">
+		<br>
+		<h2>Others' albums</h2>
+		<div id="othersAlbumsAlert" class="alertmessage"></div>
+		<div id="othersAlbumsContainer">
+			<div id="othersAlbumsBody"></div>
+		</div>
+	</div>
+
+
+	<div id="selectedAlbumContainer" align="center">
+
+		<br>
+		<hr>
+		<br>
+
+		<h2>Selected album:</h2>
+		<div id="selectedAlbumAlert" class="alertmessage"></div>
+
+		<table id="imagesContainer" class="boxed" border=1>
+			<tbody>
+				<tr>
+					<td><a href="#" id="previousButton">  <input type="submit" value="<"></a></td>
+					<td id="imagesBody"></td>
+					<td><a href="#" id="nextButton"> <input type="submit" value=">"> </a></td>
+				</tr>
+			</tbody>
+		</table>
+		<br><br>
+		<form id="addImageForm" action="#">
+			<fieldset style="width: 350px">
+				Add image to album: <br> 
+				Title:<input type="text" name="title" required><br>  
+				Description:<input type="text" name="descriptionText" required><br> 
+				Path:<input type="text" name="path" required><br> 
+				<input type="hidden" name="idAlbumSelected"> <br> 
+				<input id="addimagebutton" type="submit" value="Create">
+				<div id="createImageAlert" class="alertmessage"></div>
+			</fieldset>
+		</form>
+	</div>
+
+	<br>
+
+	<div id="selectedImageContainer" class="modal" align="center">
+		<div align="right">
+			<button id="closeButton" class="closeButton">&times;</button>
+		</div>
+		Image selected:
+		<div id="selectedImageAlert" class="alertmessage"></div>
+		<div align = "center">
+		<table>
+			<tbody id="selectedImageBody"></tbody>
+		</table>
+
+		<table>
+			<tr>
+				<td>
+					<table id="selectedImageComments" class="boxed">
+						<tbody id="commentsBody"></tbody>
+				    </table>
+				</td>
+		</table>
+		</div>
+		<div id="commentsAlert" class="alertmessage" align="center"></div>
+
+		<form id="addCommentForm" action="#">
+			<fieldset style="width: 350px">
+				Add a comment: <br> 
+				Text: <input type="text" name = "commentText" id="commentText" required><br> 
+				<input type="hidden" name="imageSelectedId" required> 
+				<input type="hidden" id="imageSelectedAlbumId" required> 
+				<input id="addcommentbutton" type="submit" value="Create">
+			</fieldset>
+		</form>
+
+	</div>
+</body>
+</html>

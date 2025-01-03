@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Photo Album</title>
+<script src="utils.js" charset="utf-8" defer></script>
+<script src="LoginManagement.js" charset="utf-8" defer></script>
+<link rel="stylesheet" type="text/css" media="all" href="css/Index.css" />
+</head>
+
+
+<body>
+	<h1 align = "center">WELCOME TO MY PHOTO ALBUM</h1>
+	<div align="center">Login:
+		<form action="#">
+			<fieldset style="width:350px">
+				 Username: <input type="text" name="username" required><br><br>
+				 Password: <input type="password" name="pwd" required><br><br>
+				 <input id="loginbutton" type="button" value="Login"><br>
+				 <p id="loginerrormessage"></p>
+			</fieldset>
+		</form>
+	</div>
+	<div align="center">or Register now:
+		<form action="#">
+			<fieldset style="width:350px">
+				Username:<input type="text" name="username" required><br> <br>
+				Email:<input id="email_input" type="email" name="email" required><br><br>
+				Password:<input id="password_input" type="password" name="pwd" required><br><br> 
+				Confirm Password:<input	id="confirmPassword_input" type="password" name="confirmPassword" required><br><br> 
+				<input id="signupbutton" type="button" value="SignUp"><br>
+				<p id="signuperrormessage"></p>
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>

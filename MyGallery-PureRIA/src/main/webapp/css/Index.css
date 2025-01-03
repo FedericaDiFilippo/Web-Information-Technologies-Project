@@ -1,0 +1,15 @@
+body{
+  background-image: url('../forPages/background.jpg');
+   background-position: center center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.textfield{
+	padding: 16px;
+}
+
+.form{
+	width: 45%;
+}
