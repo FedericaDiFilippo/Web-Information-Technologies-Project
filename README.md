@@ -49,5 +49,5 @@ The application employs a relational database with the following schema:
 This project was developed as part of the "Web Technologies" course at Politecnico di Milano and received the highest evaluation.
 
 ## Author
-Federica Di Filippo
+Federica Di Filippo  
 Politecnico di Milano
