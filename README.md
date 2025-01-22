@@ -45,9 +45,6 @@ The application employs a relational database with the following schema:
 3. Deploy the web application on a servlet container (e.g., Apache Tomcat).
 4. Access the application via a web browser.
 
-## Academic Recognition
-This project was developed as part of the "Web Technologies" course at Politecnico di Milano and received the highest evaluation.
-
 ## Author
 Federica Di Filippo  
 Politecnico di Milano
